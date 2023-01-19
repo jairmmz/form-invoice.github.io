@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">     
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Formulario de factura</title>
+		<link rel="stylesheet" href="./css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/custom.css">
+		<link rel=icon href='img/logo-icon.png' sizes="32x32" type="image/png">  
+	</head>
+  <body class="">
+		<nav class="navbar navbar-default ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#">Simple Invoice</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="https://obedalvarado.pw/demo/simple_pack/facturas.php"><i class="glyphicon glyphicon-list-alt"></i> Facturas <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href=""><i class="glyphicon glyphicon-barcode"></i> Productos</a></li>
+		<li class=""><a href=""><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
+		<li class=""><a href=""><i class="glyphicon glyphicon-lock"></i> Usuarios</a></li>
+		<li class=""><a href=""><i class="glyphicon glyphicon-cog"></i> Configuración</a></li>
+       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://obedalvarado.pw/contacto/" target="_blank"><i class="glyphicon glyphicon-envelope"></i> Soporte</a></li>
+		<li><a href="http://obedalvarado.pw/demo/simple_pack/login.php?logout"><i class="glyphicon glyphicon-off"></i> Salir</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	  
+    <div class="container">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h4><i class="glyphicon glyphicon-edit"></i> Nueva Factura</h4>
+		</div>
+		<div class="panel-body">
+				
+			<!-- Modal -->
+			<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+			  <div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<h4 class="modal-title" id="myModalLabel">Buscar productos</h4>
+				  </div>
+				  <div class="modal-body">
+					<form class="form-horizontal">
+					  <div class="form-group">
+						<div class="col-sm-6">
+						  <input type="text" class="form-control" id="q" placeholder="Buscar productos" onkeyup="load(1)">
+						</div>
+						<button type="button" class="btn btn-default" onclick="load(1)"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+					  </div>
+					</form>
+					<div id="loader" style="position: absolute; text-align: center; top: 55px; width: 100%;"></div><!-- Carga gif animado -->
+					<div class="outer_div">			<div class="table-responsive">
+			  <table class="table">
+				<tbody><tr class="warning">
+					<th>Código</th>
+					<th>Producto</th>
+					<th><span class="pull-right">Cant.</span></th>
+					<th><span class="pull-right">Precio</span></th>
+					<th class="text-center" style="width: 36px;">Agregar</th>
+				</tr>
+									<tr>
+						<td>eef</td>
+						<td>efdfdf</td>
+						<td class="col-xs-1">
+						<div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="cantidad_23" value="1">
+						</div></td>
+						<td class="col-xs-2"><div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="precio_venta_23" value="12.00">
+						</div></td>
+						<td class="text-center"><a class="btn btn-info" href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#" onclick="agregar()"><i class="glyphicon glyphicon-plus"></i></a></td>
+					</tr>
+										<tr>
+						<td>012132</td>
+						<td>papp</td>
+						<td class="col-xs-1">
+						<div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="cantidad_24" value="1">
+						</div></td>
+						<td class="col-xs-2"><div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="precio_venta_24" value="12.00">
+						</div></td>
+						<td class="text-center"><a class="btn btn-info" href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#" onclick="agregar()"><i class="glyphicon glyphicon-plus"></i></a></td>
+					</tr>
+										<tr>
+						<td>001</td>
+						<td>Tacos</td>
+						<td class="col-xs-1">
+						<div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="cantidad_25" value="1">
+						</div></td>
+						<td class="col-xs-2"><div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="precio_venta_25" value="1000.00">
+						</div></td>
+						<td class="text-center"><a class="btn btn-info" href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#" onclick="agregar()"><i class="glyphicon glyphicon-plus"></i></a></td>
+					</tr>
+										<tr>
+						<td>1</td>
+						<td>frijoles</td>
+						<td class="col-xs-1">
+						<div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="cantidad_26" value="1">
+						</div></td>
+						<td class="col-xs-2"><div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="precio_venta_26" value="1.90">
+						</div></td>
+						<td class="text-center"><a class="btn btn-info" href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#" onclick="agregar()"><i class="glyphicon glyphicon-plus"></i></a></td>
+					</tr>
+										<tr>
+						<td>3</td>
+						<td>frijol</td>
+						<td class="col-xs-1">
+						<div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="cantidad_27" value="1">
+						</div></td>
+						<td class="col-xs-2"><div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="precio_venta_27" value="1.90">
+						</div></td>
+						<td class="text-center"><a class="btn btn-info" href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#" onclick="agregar()"><i class="glyphicon glyphicon-plus"></i></a></td>
+					</tr>
+									<tr>
+					<td colspan="5"><span class="pull-right">
+					<ul class="pagination pagination-large"><li class="disabled"><span><a>‹ Prev</a></span></li><li class="active"><a>1</a></li><li><a href="javascript:void(0);" onclick="load(2)">2</a></li><li><a href="javascript:void(0);" onclick="load(3)">3</a></li><li><a href="javascript:void(0);" onclick="load(4)">4</a></li><li><a href="javascript:void(0);" onclick="load(5)">5</a></li><li><a>...</a></li><li><a href="javascript:void(0);" onclick="load(17)">17</a></li><li><span><a href="javascript:void(0);" onclick="load(2)">Next ›</a></span></li></ul></span></td>
+				</tr>
+			  </tbody></table>
+			</div>
+			</div><!-- Datos ajax Final -->
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<!-- Modal -->
+	<div class="modal fade" id="nuevoCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+			<h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i> Agregar nuevo cliente</h4>
+		  </div>
+		  <div class="modal-body">
+			<form class="form-horizontal" method="post" id="guardar_cliente" name="guardar_cliente">
+			<div id="resultados_ajax"></div>
+			  <div class="form-group">
+				<label for="nombre" class="col-sm-3 control-label">Nombre</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="nombre" name="nombre" required="">
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label for="telefono" class="col-sm-3 control-label">Teléfono</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="telefono" name="telefono">
+				</div>
+			  </div>
+			  
+			  <div class="form-group">
+				<label for="email" class="col-sm-3 control-label">Email</label>
+				<div class="col-sm-8">
+					<input type="email" class="form-control" id="email" name="email">
+				  
+				</div>
+			  </div>
+			  
+			  <div class="form-group">
+				<label for="direccion" class="col-sm-3 control-label">Dirección</label>
+				<div class="col-sm-8">
+					<textarea class="form-control" id="direccion" name="direccion" maxlength="255"></textarea>
+				  
+				</div>
+			  </div>
+			  
+			  <div class="form-group">
+				<label for="estado" class="col-sm-3 control-label">Estado</label>
+				<div class="col-sm-8">
+				 <select class="form-control" id="estado" name="estado" required="">
+					<option value="">-- Selecciona estado --</option>
+					<option value="1" selected="">Activo</option>
+					<option value="0">Inactivo</option>
+				  </select>
+				</div>
+			  </div>
+			 
+			 
+			 
+			
+		  </form></div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+			<button type="submit" class="btn btn-primary" id="guardar_datos">Guardar datos</button>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+			<!-- Modal -->
+	<div class="modal fade" id="nuevoProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+			<h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i> Agregar nuevo producto</h4>
+		  </div>
+		  <div class="modal-body">
+			<form class="form-horizontal" method="post" id="guardar_producto" name="guardar_producto">
+			<div id="resultados_ajax_productos"></div>
+			  <div class="form-group">
+				<label for="codigo" class="col-sm-3 control-label">Código</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Código del producto" required="">
+				</div>
+			  </div>
+			  
+			  <div class="form-group">
+				<label for="nombre" class="col-sm-3 control-label">Nombre</label>
+				<div class="col-sm-8">
+					<textarea class="form-control" id="nombre" name="nombre" placeholder="Nombre del producto" required="" maxlength="255"></textarea>
+				  
+				</div>
+			  </div>
+			  
+			  <div class="form-group">
+				<label for="estado" class="col-sm-3 control-label">Estado</label>
+				<div class="col-sm-8">
+				 <select class="form-control" id="estado" name="estado" required="">
+					<option value="">-- Selecciona estado --</option>
+					<option value="1" selected="">Activo</option>
+					<option value="0">Inactivo</option>
+				  </select>
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label for="precio" class="col-sm-3 control-label">Precio</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="precio" name="precio" placeholder="Precio de venta del producto" required="" pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
+				</div>
+			  </div>
+			 
+			 
+			
+		  </form></div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+			<button type="submit" class="btn btn-primary" id="guardar_datos">Guardar datos</button>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+				<form class="form-horizontal" role="form" id="datos_factura">
+				<div class="form-group row">
+				  <label for="nombre_cliente" class="col-md-1 control-label">Cliente</label>
+				  <div class="col-md-3">
+					  <input type="text" class="form-control input-sm ui-autocomplete-input" id="nombre_cliente" placeholder="Selecciona un cliente" required="" autocomplete="off">
+					  <input id="id_cliente" name="id_cliente" type="hidden">	
+				  </div>
+				  <label for="tel1" class="col-md-1 control-label">Teléfono</label>
+							<div class="col-md-2">
+								<input type="text" class="form-control input-sm" id="tel1" placeholder="Teléfono" readonly="">
+							</div>
+					<label for="mail" class="col-md-1 control-label">Email</label>
+							<div class="col-md-3">
+								<input type="text" class="form-control input-sm" id="mail" placeholder="Email" readonly="">
+							</div>
+				 </div>
+						<div class="form-group row">
+							<label for="empresa" class="col-md-1 control-label">Vendedor</label>
+							<div class="col-md-3">
+								<select class="form-control input-sm" id="id_vendedor" name="id_vendedor">
+																				<option value="1" selected="">Obed Alvarado</option>
+																			</select>
+							</div>
+							<label for="tel2" class="col-md-1 control-label">Fecha</label>
+							<div class="col-md-2">
+								<input type="text" class="form-control input-sm" id="fecha" value="19/01/2023" readonly="">
+							</div>
+							<label for="condiciones" class="col-md-1 control-label">Pago</label>
+							<div class="col-md-3">
+								<select class="form-control input-sm" id="condiciones" name="condiciones">
+									<option value="1">Efectivo</option>
+									<option value="2">Cheque</option>
+									<option value="3">Transferencia bancaria</option>
+									<option value="4">Crédito</option>
+								</select>
+							</div>
+						</div>
+				
+				
+				<div class="col-md-12">
+					<div class="pull-right">
+						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProducto">
+						 <span class="glyphicon glyphicon-plus"></span> Nuevo producto
+						</button>
+						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoCliente">
+						 <span class="glyphicon glyphicon-user"></span> Nuevo cliente
+						</button>
+						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+						 <span class="glyphicon glyphicon-search"></span> Agregar productos
+						</button>
+						<button type="submit" class="btn btn-default">
+						  <span class="glyphicon glyphicon-floppy-disk"></span> Guardar factura
+						</button>
+					</div>	
+				</div>
+			</form>	
+			
+			<div class="clearfix"></div>
+				<div class="guardar_factura" style="margin-top:10px"></div><!-- Carga los datos ajax -->	
+			
+		<div id="resultados" class="col-md-12" style="margin-top:10px"><table class="table">
+<tbody><tr>
+	<th class="text-center">CODIGO</th>
+	<th class="text-center">CANT.</th>
+	<th>DESCRIPCION</th>
+	<th class="text-right">PRECIO UNIT.</th>
+	<th class="text-right">PRECIO TOTAL</th>
+	<th></th>
+</tr>
+		<tr>
+			<td class="text-center">eef</td>
+			<td class="text-center">1</td>
+			<td>efdfdf</td>
+			<td class="text-right">12.00</td>
+			<td class="text-right">12.00</td>
+			<td class="text-center"><a href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#" onclick="eliminar()"><i class="glyphicon glyphicon-trash"></i></a></td>
+		</tr>		
+				<tr>
+			<td class="text-center">eef</td>
+			<td class="text-center">1</td>
+			<td>efdfdf</td>
+			<td class="text-right">12.00</td>
+			<td class="text-right">12.00</td>
+			<td class="text-center"><a href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#" onclick="eliminar()"><i class="glyphicon glyphicon-trash"></i></a></td>
+		</tr>		
+				<tr>
+			<td class="text-center">eef</td>
+			<td class="text-center">1</td>
+			<td>efdfdf</td>
+			<td class="text-right">12.00</td>
+			<td class="text-right">12.00</td>
+			<td class="text-center"><a href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#" onclick="eliminar()"><i class="glyphicon glyphicon-trash"></i></a></td>
+		</tr>		
+				<tr>
+			<td class="text-center">eef</td>
+			<td class="text-center">1</td>
+			<td>efdfdf</td>
+			<td class="text-right">12.00</td>
+			<td class="text-right">12.00</td>
+			<td class="text-center"><a href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#" onclick="eliminar()"><i class="glyphicon glyphicon-trash"></i></a></td>
+		</tr>		
+				<tr>
+			<td class="text-center">eef</td>
+			<td class="text-center">1</td>
+			<td>efdfdf</td>
+			<td class="text-right">12.00</td>
+			<td class="text-right">12.00</td>
+			<td class="text-center"><a href="http://obedalvarado.pw/demo/simple_pack/nueva_factura.php#" onclick="eliminar()"><i class="glyphicon glyphicon-trash"></i></a></td>
+		</tr>		
+		<tr>
+	<td class="text-right" colspan="4">SUBTOTAL $</td>
+	<td class="text-right">60.00</td>
+	<td></td>
+</tr>
+<tr>
+	<td class="text-right" colspan="4">IVA (16)% $</td>
+	<td class="text-right">9.60</td>
+	<td></td>
+</tr>
+<tr>
+	<td class="text-right" colspan="4">TOTAL $</td>
+	<td class="text-right">69.60</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</div><!-- Carga los datos ajax -->			
+		</div>
+	</div>		
+		  <div class="row-fluid">
+			<div class="col-md-12">
+			
+	
+
+			
+			</div>	
+		 </div>
+	</div>
+	<hr>
+	<div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <p class="navbar-text pull-left">© 2023 - Obed Alvarado.
+           <a href="http://obedalvarado.pw/" target="_blank" style="color: #ecf0f1">Sitios Web y Sistemas</a>
+      </p>
+   </div>
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+	<script src="./js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>	<script type="text/javascript" src="./js/VentanaCentrada.js"></script>
+	<script type="text/javascript" src="./js/nueva_factura.js"></script>
+	<link rel="stylesheet" href="./js/jquery-ui.css">
+    <script src="./js/jquery-ui.js"></script>
+	<script>
+		$(function() {
+						$("#nombre_cliente").autocomplete({
+							source: "./ajax/autocomplete/clientes.php",
+							minLength: 2,
+							select: function(event, ui) {
+								event.preventDefault();
+								$('#id_cliente').val(ui.item.id_cliente);
+								$('#nombre_cliente').val(ui.item.nombre_cliente);
+								$('#tel1').val(ui.item.telefono_cliente);
+								$('#mail').val(ui.item.email_cliente);
+																
+								
+							 }
+						});
+						 
+						
+					});
+					
+	$("#nombre_cliente" ).on( "keydown", function( event ) {
+						if (event.keyCode== $.ui.keyCode.LEFT || event.keyCode== $.ui.keyCode.RIGHT || event.keyCode== $.ui.keyCode.UP || event.keyCode== $.ui.keyCode.DOWN || event.keyCode== $.ui.keyCode.DELETE || event.keyCode== $.ui.keyCode.BACKSPACE )
+						{
+							$("#id_cliente" ).val("");
+							$("#tel1" ).val("");
+							$("#mail" ).val("");
+											
+						}
+						if (event.keyCode==$.ui.keyCode.DELETE){
+							$("#nombre_cliente" ).val("");
+							$("#id_cliente" ).val("");
+							$("#tel1" ).val("");
+							$("#mail" ).val("");
+						}
+			});	
+	</script>
+
+  
+<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0" style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+</body>
+</html>

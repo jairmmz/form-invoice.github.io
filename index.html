@@ -36,6 +36,7 @@
   <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
   <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
   <script src="/assets/js/config.js"></script>
+ 
 </head>
 
 <body>
@@ -401,14 +402,12 @@
                               <div class="row">
                                 <div class="mb-2 col-md-2">
                                   <label class="form-label" for="phoneNumber">DNI del cliente</label>
-                                  <div class="input-group input-group-merge">
-                                    <input type="text" id="dni" name="dni" class="form-control" sonblur="autocompletar();" placeholder="00000000">
-                                  </div>
+                                    <input type="text" id="dni" name="dni" class="form-control" onblur="autocompletarBoleta();" placeholder="00000000">
+                                  <div class="input-group input-group-merge"></div>
                                 </div>
                                 <div class="mb-2 col-md-3 fv-plugins-icon-container">
                                   <label for="firstName" class="form-label">Nombre del cliente</label>
-                                  <input class="form-control" type="text" id="nonmbre" name="firstName" value=""
-                                    autofocus="">
+                                  <input class="form-control" type="text" id="nombre" name="firstName" value="" autofocus="">
                                   <div class="fv-plugins-message-container invalid-feedback"></div>
                                 </div>
                                 <div class="mb-2 col-md-3 fv-plugins-icon-container">
@@ -428,18 +427,17 @@
                               <div class="row">
                                 <div class="mb-2 col-md-2 fv-plugins-icon-container">
                                   <label for="firstName" class="form-label">RUC</label>
-                                  <input class="form-control" type="text" id="firstName" name="firstName" value=""
-                                    autofocus="">
+                                  <input class="form-control" type="text" id="ruc" name="firstName" value="" onblur="autocompletarFactura();" autofocus="">
                                   <div class="fv-plugins-message-container invalid-feedback"></div>
                                 </div>
                                 <div class="mb-2 col-md-5 fv-plugins-icon-container">
                                   <label for="lastName" class="form-label">Razón social</label>
-                                  <input class="form-control" type="text" name="lastName" id="lastName" value="">
+                                  <input class="form-control" type="text" name="lastName" id="razon_social" value="">
                                   <div class="fv-plugins-message-container invalid-feedback"></div>
                                 </div>
                                 <div class="mb-2 col-md-5">
                                   <label for="organization" class="form-label">Dirección del cliente</label>
-                                  <input type="text" class="form-control" id="organization" name="organization"
+                                  <input type="text" class="form-control" id="direccion_empresa" name="organization"
                                     value="">
                                 </div>
                               </div>
@@ -654,6 +652,7 @@
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>

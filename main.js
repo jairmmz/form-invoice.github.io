@@ -49,7 +49,9 @@ function autocompletarBoleta() {
             document.getElementById("direccion").value = cliente[i]['direccion'];
         }
         else{
-            console.log("no se encontro")
+            document.getElementById("nombre").value = " ";
+            document.getElementById("apellido").value = " ";
+            document.getElementById("direccion").value = " ";
         }
     }
     
@@ -99,7 +101,8 @@ function autocompletarFactura() {
             document.getElementById("direccion_empresa").value = empresa[i]['direccion_empresa'];
         }
         else{
-            console.log("no se encontro")
+            document.getElementById("razon_social").value = " ";
+            document.getElementById("direccion_empresa").value = " ";
         }
     }
     

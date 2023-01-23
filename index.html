@@ -33,7 +33,6 @@
   <!--estilos para validacion de campos  -->
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estilos.css">
 
   <!-- Helpers -->
   <script src="assets/vendor/js/helpers.js"></script>
@@ -254,15 +253,15 @@
                                   <div class="formulario__grupo" id="grupo__address">
                                     <label for="address" class="form-label">Dirección del cliente</label>
                                     <div class="formulario__grupo-input">
-                                      <input type="text" id="address" name="address" class="form-control">
+                                      <input type="text" id="addressTicket" name="addressTicket" class="form-control">
                                       <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                     </div>
                                     <p class="formulario__input-error">Ingrese una direccion ejm: Av.ayacucho.</p>
                                   </div>
                                 </div>
                                 <!-- ----- -->
-                                <input type="number" id="number" class="form-control" style="display:none;">
-                                <input type="date" id="dateIssue" class="form-control" style="display:none;">
+                                <input type="number" id="numberTicket" class="form-control" style="display:none;">
+                                <input type="date" id="dateIssueTicket" class="form-control" style="display:none;">
                               </div>
                             </form>
                           </div>
@@ -296,7 +295,7 @@
                                 <div class="formulario__grupo" id="grupo__address2">
                                   <label for="address2" class="form-label">Dirección cliente</label>
                                   <div class="formulario__grupo-input">
-                                    <input type="text" name="address2" id="address2" class="form-control">
+                                    <input type="text" name="address2" id="addressInv" class="form-control">
                                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                   </div>
                                   <p class="formulario__input-error">Ingrese una direccion ejm: Av.ayacucho.</p>
@@ -389,11 +388,11 @@
                           Proceder con la venta
                         </button>
                       </div>
-                      <div class="col-6 mb-4 text-end">
+                      <!-- <div class="col-6 mb-4 text-end">
                         <button type="button" class="btn btn-primary formSendInvoice">
-                          Proceder con la venta
+                          Proceder con la venta elim
                         </button>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -406,7 +405,7 @@
       </div>
       <!-- / Content -->
       <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true">
-        <form action="" method="post" autocomplete="off">
+        <form action="" method="post" id="formModal" autocomplete="off">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -417,24 +416,24 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col-sm-6">
-                    <label for="nameLarge" class="form-label">Nombre del producto</label>
-                    <input type="text" id="nameLarge" class="form-control" required />
+                    <label for="modalProduct" class="form-label">Nombre del producto</label>
+                    <input type="text" id="modalProduct" class="form-control" required />
                   </div>
                   <div class="col-sm-3">
-                    <label for="emailLarge" class="form-label">Precio unitario</label>
-                    <input type="text" id="emailLarge" class="form-control" required />
+                    <label for="modalPrice" class="form-label">Precio unitario</label>
+                    <input type="text" id="modalPrice" class="form-control" required />
                   </div>
                   <div class="col-sm-3">
-                    <label for="dobLarge" class="form-label">Cantidad</label>
-                    <input type="text" id="dobLarge" class="form-control" required />
+                    <label for="modalAmount" class="form-label">Cantidad</label>
+                    <input type="text" id="modalAmount" class="form-control" required />
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                   Cerrar
                 </button>
-                <button type="submit" class="btn btn-primary">Agregar producto</button>
+                <button type="submit" id="btnSaveModal" class="btn btn-primary">Agregar producto</button>
               </div>
             </div>
           </div>

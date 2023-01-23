@@ -30,7 +30,7 @@ function autocompletarBoleta() {
 
     cliente[4]['nombre'] = 'ander';
     cliente[4]['apellido'] = 'ramos hurtado';
-    cliente[4]['dni'] = '1452369';
+    cliente[4]['dni'] = '74521548';
     cliente[4]['direccion'] = 'Av. Hierro';
 
     cliente[5]['nombre'] = 'Nymeria';
@@ -44,14 +44,14 @@ function autocompletarBoleta() {
     for (var i=0;  i< 6; i++) {
         if (dni == String(cliente[i]['dni'])) 
         {
-            document.getElementById("nombre").value = cliente[i]['nombre'];
-            document.getElementById("apellido").value = cliente[i]['apellido'];
-            document.getElementById("direccion").value = cliente[i]['direccion'];
+            document.getElementById("firstName").value = cliente[i]['nombre'];
+            document.getElementById("lastName").value = cliente[i]['apellido'];
+            document.getElementById("address").value = cliente[i]['direccion'];
         }
         else{
-            document.getElementById("nombre").value = " ";
-            document.getElementById("apellido").value = " ";
-            document.getElementById("direccion").value = " ";
+            document.getElementById("firstName").value = " ";
+            document.getElementById("lastName").value = " ";
+            document.getElementById("address").value = " ";
         }
     }
     

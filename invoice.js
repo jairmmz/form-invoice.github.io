@@ -1,4 +1,5 @@
 const formDetails = document.getElementById("formDetails");
+const formModal = document.getElementById("formModal");
 
 // Inputs de agregar producto
 const inputAmount = document.getElementById("amount");
@@ -21,12 +22,25 @@ inputAmount.value = 1;
 const btnSave = document.getElementById("btnSave");
 const btnCancel = document.getElementById("btnCancel");
 
-// Inputs para el primer formulario
-const inputBusinessName = document.getElementById("businessName");
+// Inputs para el formulario boleta
+const inputDNI = document.getElementById("dni");
+const inputFirstName = document.getElementById("firstName");
+const inputLastName = document.getElementById("lastName");
+const inputAddressTicket = document.getElementById("addressTicket");
+const inputNumberTicket = document.getElementById("numberTicket");
+const inputDateIssueTicket = document.getElementById("dateIssueTicket");
+
+// Inputs para el primer formulario factura
 const inputRUC = document.getElementById("ruc");
+const inputBusinessName = document.getElementById("businessName");
 const inputNumber = document.getElementById("number");
-const inputAddress = document.getElementById("address");
+const inputAddress = document.getElementById("addressInv");
 const inputDateIssue = document.getElementById("dateIssue");
+
+// Inputs para agregar del modal a la tabla
+const inputModalProduct = document.getElementById("modalProduct");
+const inputModalPrice = document.getElementById("modalPrice");
+const inputModalAmount = document.getElementById("modalAmount");
 
 // Arrays
 let invoices = [];
@@ -38,6 +52,45 @@ let productArray = [
     { id:4, name: "Tarjeta RTX 4090TI", price: 4200.0 }, 
     { id:5, name: "Monitor 28 pulgadas", price: 400.0 }
 ];
+let ticketArray = [
+    { dni:74589625, firstName: "Juan", lastName: "Perez Ortega", addressTicket: "Av. Daniel Henriquez N 0"}, 
+    { dni:12345678, firstName: "Alicia", lastName: "Aedo Valdivia", addressTicket: "Av. Daniel Salas N 23" }, 
+    { dni:87654321, firstName: "Maria", lastName: "Rojaz Alvarez", addressTicket: "Jr. Rodrigo Concepcion N 4" }, 
+    { dni:15236547, firstName: "Oscar", lastName: "Juro Quispe", addressTicket: "Urb. Dylan Trevino N 6964" }, 
+    { dni:25414785, firstName: "Alonzo", lastName: "Huamani Sanchez", addressTicket: "Av. Emiliano Jurado N 23422" }
+];
+let invoicetArray = [
+    { ruc:10164090588, businessName: "SELVA INDUSTRIAS MELITA E.I.R.L.", addressInvoice: "Av. Daniel Henriquez N 0"}, 
+    { ruc:10164120517, businessName: "AGROSORIA E.I.R.L", addressInvoice: "Av. Daniel Vallejo N 101" }, 
+    { ruc:12345678910, businessName: "AGRINOVA DEL PERU S.R.L", addressInvoice: "Jr. Rodrigo Concepcion N 4" }, 
+    { ruc:15236547233, businessName: "SOCIEDAD COMERCIAL DE PRODUCTOS AG", addressInvoice: "Urb. Dylan Trevino N 6964" }, 
+    { ruc:25414785424, businessName: "BENDICIoN DE DIOS LP", addressInvoice: "Av. Emiliano Jurado N 23422" }
+];
+
+
+inputDNI.addEventListener("change", function() {
+    let foundTicket = ticketArray.find(ticket => ticket.dni == inputDNI.value);
+    if(foundTicket) {
+        inputFirstName.value = foundTicket.firstName;
+        inputLastName.value = foundTicket.lastName;
+        inputAddressTicket.value = foundTicket.addressTicket;
+    } else {
+        // Mostrar un mensaje de error si el dni no se encuentra en el array
+        console.log("No se ha encontrado un registro con ese DNI");
+    }
+});
+
+inputRUC.addEventListener("change", function() {
+    let foundInvoice = invoicetArray.find(invoice => invoice.ruc == inputRUC.value);
+    if(foundInvoice) {
+        inputBusinessName.value = foundInvoice.businessName;
+        inputAddress.value = foundInvoice.addressInvoice;
+    } else {
+        // Mostrar un mensaje de error si el ruc no se encuentra en el array
+        console.log("No se ha encontrado un registro con ese ruc");
+    }
+});
+
 
 const verifyInvoice = () => {
     const invoicesLS = JSON.parse(localStorage.getItem("Factura"));
@@ -89,7 +142,7 @@ const redrawTable = () => {
 
         const priceTotal = details.amount * details.priceUnit;
         subtotalSum += priceTotal/1.18;
-        igvSum += priceTotal * 0.18;
+        igvSum = subtotalSum * 0.18;
         totalSum += priceTotal;
 
 
@@ -105,13 +158,6 @@ const redrawTable = () => {
                         <td>${details.priceTotal}</td>`;
         let tdDelete = document.createElement("td");
         let btnDelete = document.createElement("button");
-
-        // rowTwo.innerHTML = `<td class="text-end" colspan="4">Sub total S/.</td>
-        //                     <td>${subtotalSum.toFixed(2)}</td>`;
-        // rowThree.innerHTML = `<td class="text-end" colspan="4">IGV (18%) S/.</td>
-        //                     <td>${igvSum.toFixed(2)}</td>`;
-        // rowFour.innerHTML = `<td class="text-end" colspan="4">Total S/.</td>
-        //                     <td>${totalSum.toFixed(2)}</td>`;
 
 
         btnDelete.classList.add("btn", "btn-danger");
@@ -184,6 +230,21 @@ formDetails.onsubmit = (e) => {
     redrawTable();
 };
 
+formModal.onsubmit = (e) => {
+    e.preventDefault();
+    //Creando objeto temporal
+    const objDetails = {
+        description: inputModalProduct.value,
+        priceUnit: inputModalPrice.value,
+        amount: inputModalAmount.value,
+        subTotal: (inputModalPrice.value*inputModalAmount)*1.18,
+        priceTotal: inputModalPrice.value*inputModalAmount
+    };
+    addDetails(objDetails);
+    console.log(detailtArray);
+    redrawTable();
+};
+
 btnSave.onclick = () => {
     //Crear el objeto de la cabecera de la factura.
     let objInvoice = {
@@ -199,7 +260,7 @@ btnSave.onclick = () => {
     //Limpiar campos
     formHeader.reset();
     formDetails.reset();
-
+    formBoleta.reset();
     // Guardar en el LocalStorage
     localStorage.setItem("Facturas", JSON.stringify(invoices));
     //Limpiar la tabla

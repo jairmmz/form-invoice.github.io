@@ -51,7 +51,7 @@ const validarFormulario = (e) => {
 		case "lastName":
 			validarCampo(expresiones.lastName, e.target, 'lastName');
 		break;
-        case "address":
+        case "addressTicket":
 			validarCampo(expresiones.address, e.target, 'address');
 		break;
         case "ruc":

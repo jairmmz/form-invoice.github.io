@@ -14,11 +14,11 @@ const expresiones = {
 	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 	firstName: /^[a-zA-ZÀ-ÿ\s]{4,40}$/, // Letras y espacios, pueden llevar acentos.
 	lastName: /^[a-zA-ZÀ-ÿ\s]{4,40}$/,
-    address: /^[a-zA-ZÀ-ÿ\s]{4,40}$/,
+    address: /^[a-zA-Z0-9\_\ .\-]{4,40}$/,
 	dni: /^\d{8,8}$/, // 7 a 14 numeros.
-    address2: /^[a-zA-ZÀ-ÿ\s]{4,40}$/,
+    address2: /^[a-zA-Z0-9\_\ .\-]{4,40}$/,
     ruc:/^\d{11,11}$/,
-    businessName:  /^[a-zA-ZÀ-ÿ\s]{4,50}$/,
+    businessName:  /^[a-zA-Z0-9\_\ .\-]{4,40}$/,
     /* nameLarge:/^[a-zA-ZÀ-ÿ\s]{4,40}$/,
     emailLarge:/^[a-zA-ZÀ-ÿ\s]{4,40}$/,
     dobLarge: /^\d{1,5}$/, // 7 a 14 numeros. */

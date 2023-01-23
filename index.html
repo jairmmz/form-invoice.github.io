@@ -30,6 +30,10 @@
 
   <!-- Page CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <!--estilos para validacion de campos  -->
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
 
   <!-- Helpers -->
   <script src="assets/vendor/js/helpers.js"></script>
@@ -209,42 +213,95 @@
                         </ul>
                         <div class="tab-content">
                           <div class="tab-pane show active" id="navs-top-home" role="tabpanel">
+                            <!-- boleta -->
                             <form action="" id="formBoleta" autocomplete="off">
                               <div class="row">
+                                <!-- val dni -->
                                 <div class="mb-2 col-md-2">
-                                  <label class="form-label">DNI del cliente</label>
-                                  <input type="number" id="dni" class="form-control">
+                                  <div class="formulario__grupo" id="grupo__dni">
+                                    <label for="dni" class="form-label">DNI del cliente</label>
+                                    <div class="formulario__grupo-input">
+                                      <input type="number" class="form-control" name="dni" id="dni">
+                                      <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">son 8 digitos.</p>
+                                  </div>
+                                  <!-- val nombre -->
                                 </div>
                                 <div class="mb-2 col-md-3">
-                                  <label class="form-label">Nombre del cliente</label>
-                                  <input type="text" id="firstName" class="form-control">
+                                  <div class="formulario__grupo" id="grupo__firstName">
+                                    <label for="firstName" class="form-label">Nombre del cliente</label>
+                                    <div class="formulario__grupo-input">
+                                      <input type="text" name="firstName" id="firstName" class="form-control">
+                                      <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">mas de 4 letras.</p>
+                                  </div>
+                                  <!-- val apellido-->
                                 </div>
                                 <div class="mb-2 col-md-3">
-                                  <label class="form-label">Apellidos del cliente</label>
-                                  <input type="text" id="lastName" class="form-control">
+                                  <div class="formulario__grupo" id="grupo__lastName">
+                                    <label for="lastName" class="form-label">Apellidos del cliente</label>
+                                    <div class="formulario__grupo-input">
+                                      <input type="text" name="lastName" id="lastName" class="form-control">
+                                      <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">mas de 4 letras.</p>
+                                  </div>
                                 </div>
+                                <!-- val direccion -->
                                 <div class="mb-2 col-md-4">
-                                  <label class="form-label">Dirección del cliente</label>
-                                  <input type="text" id="address" class="form-control">
+                                  <div class="formulario__grupo" id="grupo__address">
+                                    <label for="address" class="form-label">Dirección del cliente</label>
+                                    <div class="formulario__grupo-input">
+                                      <input type="text" id="address" name="address" class="form-control">
+                                      <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">mas de 4 letras.</p>
+                                  </div>
                                 </div>
+                                <!-- ----- -->
                                 <input type="number" id="number" class="form-control" style="display:none;">
                                 <input type="date" id="dateIssue" class="form-control" style="display:none;">
                               </div>
                             </form>
                           </div>
                           <div class="tab-pane form-factura" id="navs-top-profile" role="tabpanel">
+                            <!------------------------------- factura -------------->
                             <form action="" class="row" id="formFactura" autocomplete="off">
                               <div class="mb-2 col-md-2">
-                                <label class="form-label">RUC</label>
-                                <input type="text" id="ruc" class="form-control">
+                                <!-- val ruc -->
+                                <div class="formulario__grupo" id="grupo__ruc">
+                                  <label for="ruc" class="form-label">RUC</label>
+                                  <div class="formulario__grupo-input">
+                                    <input type="text" name="ruc" id="ruc" class="form-control">
+                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                  </div>
+                                  <p class="formulario__input-error">mas de 4 letras.</p>
+                                </div>
                               </div>
                               <div class="mb-2 col-md-5">
-                                <label class="form-label">Razón social</label>
-                                <input type="text" id="businessName" class="form-control">
+                                <!-- val razon social -->
+                                <div class="formulario__grupo" id="grupo__businessName">
+                                  <label for="businessName" class="form-label">Razón social</label>
+                                  <div class="formulario__grupo-input">
+                                    <input type="text" name="businessName" id="businessName" class="form-control">
+                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                  </div>
+                                  <p class="formulario__input-error">mas de 4 letras.</p>
+                                </div>
                               </div>
                               <div class="mb-2 col-md-5">
-                                <label class="form-label">Dirección del cliente</label>
-                                <input type="text" id="address" class="form-control">
+                                <!-- val direccion cliente -->
+                                <div class="formulario__grupo" id="grupo__address2">
+                                  <label for="address2" class="form-label">Dirección cliente</label>
+                                  <div class="formulario__grupo-input">
+                                    <input type="text" name="address2" id="address2" class="form-control">
+                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                  </div>
+                                  <p class="formulario__input-error">mas de 4 letras.</p>
+                                </div>
+
                                 <input type="number" id="number" class="form-control" style="display:none;">
                                 <input type="date" id="dateIssue" class="form-control" style="display:none;">
                               </div>
@@ -443,6 +500,9 @@
   <!-- <script src="/assets/js/form-basic-inputs.js"></script> -->
 
   <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="formulario.js"></script>
+  <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="main.js"></script>
   <script src="invoice.js"></script>

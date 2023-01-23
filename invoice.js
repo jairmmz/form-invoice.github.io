@@ -9,6 +9,11 @@ const tbody = document.getElementById("tbody");
 const formHeader = document.getElementById("formFactura");
 const formBoleta = document.getElementById("formBoleta");
 
+// Para mostrar el sub total, igv, y total
+const subTotal = document.getElementById("subTotal");
+const igv = document.getElementById("igv");
+const sumTotal = document.getElementById("sumTotal");
+
 // Valor por default para la cantidad
 inputAmount.value = 1;
 
@@ -77,18 +82,15 @@ const getPriceProductById = (id) => {
 
 const redrawTable = () => {
     tbody.innerHTML="";
+    let subtotalSum = 0;
+    let igvSum = 0;
+    let totalSum = 0;
     detailtArray.forEach((details) => {
-        let subtotalSum = 0;
-        let igvSum = 0;
-        let totalSum = 0;
 
-        details.subTotal = (details.amount * details.priceUnit)/1.18;
-        details.igv = details.subTotal * 0.18;
-        details.total = details.subTotal + details.igv;
-
-        subtotalSum += details.subTotal;
-        igvSum += details.igv;
-        totalSum += details.total;
+        const priceTotal = details.amount * details.priceUnit;
+        subtotalSum += priceTotal/1.18;
+        igvSum += priceTotal * 0.18;
+        totalSum += priceTotal;
 
 
         let row = document.createElement("tr");
@@ -104,12 +106,12 @@ const redrawTable = () => {
         let tdDelete = document.createElement("td");
         let btnDelete = document.createElement("button");
 
-        rowTwo.innerHTML = `<td class="text-end" colspan="4">Sub total S/.</td>
-                            <td>${subtotalSum.toFixed(2)}</td>`;
-        rowThree.innerHTML = `<td class="text-end" colspan="4">IGV (18%) S/.</td>
-                            <td>${igvSum.toFixed(2)}</td>`;
-        rowFour.innerHTML = `<td class="text-end" colspan="4">Total S/.</td>
-                            <td>${totalSum.toFixed(2)}</td>`;
+        // rowTwo.innerHTML = `<td class="text-end" colspan="4">Sub total S/.</td>
+        //                     <td>${subtotalSum.toFixed(2)}</td>`;
+        // rowThree.innerHTML = `<td class="text-end" colspan="4">IGV (18%) S/.</td>
+        //                     <td>${igvSum.toFixed(2)}</td>`;
+        // rowFour.innerHTML = `<td class="text-end" colspan="4">Total S/.</td>
+        //                     <td>${totalSum.toFixed(2)}</td>`;
 
 
         btnDelete.classList.add("btn", "btn-danger");
@@ -127,6 +129,9 @@ const redrawTable = () => {
         tbody.appendChild(rowThree);
         tbody.appendChild(rowFour);
     }); 
+    subTotal.innerText = subtotalSum.toFixed(2);
+    igv.innerText = igvSum.toFixed(2);
+    sumTotal.innerText = totalSum.toFixed(2);
 };
 
 const deleteDetailById = (id) => {

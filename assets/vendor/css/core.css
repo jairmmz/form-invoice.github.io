@@ -70,7 +70,7 @@ body {
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
+  color: #0e3b6c;
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
@@ -2145,7 +2145,8 @@ progress {
   margin-bottom: 0.5rem;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #566a7f;
+  color: #0e3b6c;
+  /* color: #566a7f; */
 }
 
 .col-form-label {
@@ -6228,7 +6229,7 @@ a.invert-bg-dark:hover, a.invert-bg-dark:focus {
   letter-spacing: 1px;
 }
 .table:not(.table-dark) th {
-  color: #566a7f;
+  color: #0e3b6c;
 }
 
 .table-border-bottom-0 tr:last-child td,
@@ -7112,12 +7113,12 @@ button:focus {
 }
 
 .nav-tabs .nav-item .nav-link {
-  color: #566a7f;
+  color: #0e3b6c;
   border: 0;
   border-radius: 0;
 }
 .nav-tabs .nav-item .nav-link:hover, .nav-tabs .nav-item .nav-link:focus {
-  color: #566a7f;
+  color: #0e3b6c;
 }
 .nav-tabs .nav-item .nav-link:not(.active) {
   background-color: #eceef1;

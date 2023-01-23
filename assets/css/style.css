@@ -9,3 +9,8 @@ input[type=number] { -moz-appearance:textfield; }
 .p-right{
   padding-right: 0px;
 }
+
+.m-r-b{
+  padding-right: 80px !important;
+  margin-right: 80px !important;
+}

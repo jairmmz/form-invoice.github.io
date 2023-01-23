@@ -224,7 +224,7 @@
                                       <input type="number" class="form-control" name="dni" id="dni">
                                       <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                     </div>
-                                    <p class="formulario__input-error">son 8 digitos.</p>
+                                    <p class="formulario__input-error">Ingrese un formato de 8 dígitos.</p>
                                   </div>
                                   <!-- val nombre -->
                                 </div>
@@ -235,7 +235,7 @@
                                       <input type="text" name="firstName" id="firstName" class="form-control">
                                       <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                     </div>
-                                    <p class="formulario__input-error">ingrese un nombre correcto ejm: juan.</p>
+                                    <p class="formulario__input-error">Ingrese un nombre correcto ejm: Juan.</p>
                                   </div>
                                   <!-- val apellido-->
                                 </div>
@@ -246,7 +246,7 @@
                                       <input type="text" name="lastName" id="lastName" class="form-control">
                                       <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                     </div>
-                                    <p class="formulario__input-error">ingrese un apellido valido ejm: rios huamani.</p>
+                                    <p class="formulario__input-error">Ingrese un apellido valido ejm: Rios Huamani.</p>
                                   </div>
                                 </div>
                                 <!-- val direccion -->
@@ -257,7 +257,7 @@
                                       <input type="text" id="address" name="address" class="form-control">
                                       <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                     </div>
-                                    <p class="formulario__input-error">ingrese una direccion ejm: av.ayacucho.</p>
+                                    <p class="formulario__input-error">Ingrese una direccion ejm: Av.ayacucho.</p>
                                   </div>
                                 </div>
                                 <!-- ----- -->
@@ -277,7 +277,7 @@
                                     <input type="text" name="ruc" id="ruc" class="form-control">
                                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                   </div>
-                                  <p class="formulario__input-error">el RUC consta de once (11) dígitos.</p>
+                                  <p class="formulario__input-error">El RUC consta de once (11) dígitos.</p>
                                 </div>
                               </div>
                               <div class="mb-2 col-md-5">
@@ -288,7 +288,7 @@
                                     <input type="text" name="businessName" id="businessName" class="form-control">
                                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                   </div>
-                                  <p class="formulario__input-error">la razon social es requerida ejm: Socosani S. A.</p>
+                                  <p class="formulario__input-error">La razon social es requerida ejm: Socosani S. A.</p>
                                 </div>
                               </div>
                               <div class="mb-2 col-md-5">
@@ -299,7 +299,7 @@
                                     <input type="text" name="address2" id="address2" class="form-control">
                                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                   </div>
-                                  <p class="formulario__input-error">ingrese una direccion ejm: av.ayacucho.</p>
+                                  <p class="formulario__input-error">Ingrese una direccion ejm: Av.ayacucho.</p>
                                 </div>
 
                                 <input type="number" id="number" class="form-control" style="display:none;">
@@ -357,7 +357,7 @@
                                 <hr>
                                 <tr>
                                   <th>Cantidad</th>
-                                  <th>Descripción</th>
+                                  <th>Nombre del producto</th>
                                   <th>Precio unitario</th>
                                   <th>Sub total</th>
                                   <th>Precio total</th>
@@ -371,6 +371,11 @@
                           </div>
                         </div>
                       </div>
+                      <span class="d-block text-end">
+                        <span class="m-2">SUB TOTAL S/. <b id="subTotal">0.00</b></span>
+                        <span class="m-2">IGV (18%) S/. <b id="igv">0.00</b></span>
+                        <span class="m-2 m-r-b">TOTAL S/. <b id="sumTotal">0.00</b></span>
+                      </span>
                     </div>
                     <div class="row">
                       <hr>
@@ -411,16 +416,16 @@
               </div>
               <div class="modal-body">
                 <div class="row">
-                  <div class="col-sm-4">
-                    <label for="nameLarge" class="form-label">Nombre</label>
+                  <div class="col-sm-6">
+                    <label for="nameLarge" class="form-label">Nombre del producto</label>
                     <input type="text" id="nameLarge" class="form-control" required />
                   </div>
-                  <div class="col-sm-6">
-                    <label for="emailLarge" class="form-label">Descripción</label>
+                  <div class="col-sm-3">
+                    <label for="emailLarge" class="form-label">Precio unitario</label>
                     <input type="text" id="emailLarge" class="form-control" required />
                   </div>
-                  <div class="col-sm-2">
-                    <label for="dobLarge" class="form-label">Precio</label>
+                  <div class="col-sm-3">
+                    <label for="dobLarge" class="form-label">Cantidad</label>
                     <input type="text" id="dobLarge" class="form-control" required />
                   </div>
                 </div>

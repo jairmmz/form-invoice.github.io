@@ -9,6 +9,7 @@ const tbody = document.getElementById("tbody");
 const formHeader = document.getElementById("formFactura");
 const formBoleta = document.getElementById("formBoleta");
 
+// Valor por default para la cantidad
 inputAmount.value = 1;
 
 // Boton para guardar
@@ -26,7 +27,7 @@ const inputDateIssue = document.getElementById("dateIssue");
 let invoices = [];
 let detailtArray = [];
 let productArray = [
-    { id:1, name: "Teclado Gamer Razer", price: 90.0 }, 
+    { id:1, name: "Teclado Gamer Razer", price: 91.5}, 
     { id:2, name: "Mouse Gamer Radeon", price: 100.0 }, 
     { id:3, name: "Cooler para laptop", price: 40.0 }, 
     { id:4, name: "Tarjeta RTX 4090TI", price: 4200.0 }, 
@@ -39,7 +40,7 @@ const verifyInvoice = () => {
     //     invoices = invoicesLS;
     // }
 
-    // invoices = invoicesLS || [];
+    invoices = invoicesLS || [];
 };
 
 verifyInvoice();
@@ -73,25 +74,58 @@ const getPriceProductById = (id) => {
     return objProduct.price;
 };
 
+
 const redrawTable = () => {
     tbody.innerHTML="";
     detailtArray.forEach((details) => {
+        let subtotalSum = 0;
+        let igvSum = 0;
+        let totalSum = 0;
+
+        details.subTotal = (details.amount * details.priceUnit)/1.18;
+        details.igv = details.subTotal * 0.18;
+        details.total = details.subTotal + details.igv;
+
+        subtotalSum += details.subTotal;
+        igvSum += details.igv;
+        totalSum += details.total;
+
+
         let row = document.createElement("tr");
+        let rowTwo = document.createElement("tr");
+        let rowThree = document.createElement("tr");
+        let rowFour = document.createElement("tr");
+
         row.innerHTML = `<td>${details.amount}</td>
                         <td>${getProductNameById(details.description)}</td>
                         <td>${details.priceUnit}</td>
+                        <td>${details.subTotal.toFixed(2)}</td>
                         <td>${details.priceTotal}</td>`;
-        let tdDelete = document.createElement("td")
+        let tdDelete = document.createElement("td");
         let btnDelete = document.createElement("button");
+
+        rowTwo.innerHTML = `<td class="text-end" colspan="4">Sub total S/.</td>
+                            <td>${subtotalSum.toFixed(2)}</td>`;
+        rowThree.innerHTML = `<td class="text-end" colspan="4">IGV (18%) S/.</td>
+                            <td>${igvSum.toFixed(2)}</td>`;
+        rowFour.innerHTML = `<td class="text-end" colspan="4">Total S/.</td>
+                            <td>${totalSum.toFixed(2)}</td>`;
+
+
         btnDelete.classList.add("btn", "btn-danger");
         btnDelete.innerText = "Eliminar"
+
         btnDelete.onclick = () => {
             // console.log(details);
             deleteDetailById(details.description);
         }
         tdDelete.appendChild(btnDelete);
+        
         row.appendChild(tdDelete);
         tbody.appendChild(row);
+        tbody.appendChild(rowTwo);
+        tbody.appendChild(rowThree);
+        tbody.appendChild(rowFour);
     }); 
 };
 
@@ -119,6 +153,7 @@ const addDetails = (objDetails) => {
                     amount: +detail.amount + +objDetails.amount,
                     description: detail.description,
                     priceTotal: (+detail.amount + +objDetails.amount)* +detail.priceUnit,
+                    subTotal: ((+detail.amount + +objDetails.amount)* +detail.priceUnit)/1.18,
                     priceUnit: +detail.priceUnit,
                 };
             }
@@ -136,6 +171,7 @@ formDetails.onsubmit = (e) => {
         amount: inputAmount.value,
         description: inputSelectDescription.value,
         priceUnit: inputPriceUnit.value,
+        subTotal: inputPriceTotal.value/1.18,
         priceTotal: inputPriceTotal.value
     };
     addDetails(objDetails);

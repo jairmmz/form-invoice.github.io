@@ -245,7 +245,7 @@ formModal.onsubmit = (e) => {
     redrawTable();
 };
 
-btnSave.onclick = () => {
+/* btnSave.onclick = () => {
     //Crear el objeto de la cabecera de la factura.
     let objInvoice = {
         businessName: inputBusinessName.value,
@@ -258,15 +258,13 @@ btnSave.onclick = () => {
     // console.log(objInvoice); 
     invoices.push(objInvoice);
     //Limpiar campos
-    formHeader.reset();
-    formDetails.reset();
-    formBoleta.reset();
+    
     // Guardar en el LocalStorage
     localStorage.setItem("Facturas", JSON.stringify(invoices));
     //Limpiar la tabla
     detailtArray = [];
     redrawTable();
-};
+}; */
 
 btnCancel.onclick = () => {
     formHeader.reset();

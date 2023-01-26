@@ -5,6 +5,8 @@ const inputs = document.querySelectorAll('#formBoleta input');
 //formFactura
 const formularios = document.getElementById('formFactura');
 const inputss = document.querySelectorAll('#formFactura input');
+
+const formula = document.getElementById('formulario');
 //modal
 /* const formularioss = document.getElementById('modal');
 const inputsss = document.querySelectorAll('#modal input'); */
@@ -97,6 +99,7 @@ const validarCampo = (expresion, input, campo) => {
 inputs.forEach((input) => {
 	input.addEventListener('keyup', validarFormulario);
 	input.addEventListener('blur', validarFormulario);
+	input.addEventListener('change', validarFormulario);
 });
 inputss.forEach((input) => {
 	input.addEventListener('keyup', validarFormulario);
@@ -111,11 +114,28 @@ inputss.forEach((input) => {
 
 
 ////botom
-/* formulario.addEventListener('submit', (e) => {
+formula.addEventListener('click', (e) => {
 	e.preventDefault();
 
-	const terminos = document.getElementById('terminos');
-	if(campos.dni && campos.firstName && campos.lastName && campos.address  ){
+	Swal.fire({
+			title: 'Confirmar operación',
+			text: "¿Desea prodecer con la operación?",
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '¡Sí, confimar!',
+		  }).then((result) => {
+			if (result.isConfirmed) {
+			  Swal.fire(
+				'Correcto!',
+				'Operación realizada correctamente.',
+				'success'
+			  )
+			}
+		  })
+
+	if(campos.dni && campos.firstName && campos.lastName && campos.address ){
 		formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
@@ -126,7 +146,27 @@ inputss.forEach((input) => {
 		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
+		
+		
 	} else {
-		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-	}
-}); */
+		
+		if(campos.ruc && campos.businessName && campos.address2){
+			formulario.reset();
+	
+			document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
+			setTimeout(() => {
+				document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
+			}, 5000);
+	
+			document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
+				icono.classList.remove('formulario__grupo-correcto');
+			});
+			
+			
+		}else {
+		Swal.fire(
+            'Error!',
+            'llene los campos correctamente.',
+            'error')
+	}}
+}); 

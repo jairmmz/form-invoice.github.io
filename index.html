@@ -198,13 +198,13 @@
                       <div class="nav-align-top mb-4">
                         <ul class="nav nav-tabs mb-2" role="tablist">
                           <li class="nav-item">
-                            <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                            <button type="button" class="nav-link active btn-comprobante" role="tab" data-bs-toggle="tab"
                               data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="true">
                               Boleta
                             </button>
                           </li>
                           <li class="nav-item">
-                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                            <button type="button" class="nav-link btn-comprobante" role="tab" data-bs-toggle="tab"
                               data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
                               Factura
                             </button>
@@ -314,7 +314,7 @@
                         <div class="row">
                           <div class="col-12">
                             <form action="" class="row" id="formDetails" autocomplete="off">
-                              <div class="form-group col-md-3">
+                              <div class="form-group col-md-4">
                                 <label class="form-label">Seleccionar producto</label>
                                 <select class="form-control" name="" id="selectDescription">
                                   <option value="0" hidden>Seleccione los productos...</option>
@@ -332,19 +332,11 @@
                                 <label class="form-label">Precio total</label>
                                 <input type="number" id="priceTotal" class="form-control" disabled>
                               </div>
-                              <div class="form-group col-md-2 p-right">
+                              <div class="form-group col-md-3 p-right">
                                 <br>
                                 <button type="submit" class="btn btn-primary">
                                   <i class='bx bx-down-arrow-alt'></i>
-                                  Agregar
-                                </button>
-                              </div>
-                              <div class="form-group col-md-2 p-right">
-                                <br>
-                                <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                                  data-bs-target="#largeModal">
-                                  <!-- <i class='bx bx-plus-circle'></i> -->
-                                  Producto externo
+                                  Agregar producto
                                 </button>
                               </div>
                             </form>
@@ -391,15 +383,15 @@
                           correctamente. </p>
                       </div>
 
-                      <div class="col-6 mb-4 text-end">
+                      <div class="col-6 text-end">
                         <form action="" class="formulario " id="formulario">
 
                           <div class="formulario__grupo formulario__grupo-btn-enviar">
                             <button type="button" class="btn btn-primary" id="btnSaave">
-                              proceder con la venta
+                              Proceder con la venta
                             </button>
                             <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">
-                              exito!</p>
+                              Exito!</p>
                           </div>
                         </form>
                       </div>

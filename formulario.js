@@ -132,11 +132,13 @@ formula.addEventListener('click', (e) => {
 				'Operación realizada correctamente.',
 				'success'
 			  )
+			  formulario.reset();
+			  formularios.reset();
 			}
 		  })
 
 	if(campos.dni && campos.firstName && campos.lastName && campos.address ){
-		formulario.reset();
+
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -151,7 +153,7 @@ formula.addEventListener('click', (e) => {
 	} else {
 		
 		if(campos.ruc && campos.businessName && campos.address2){
-			formulario.reset();
+
 	
 			document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 			setTimeout(() => {
@@ -165,8 +167,8 @@ formula.addEventListener('click', (e) => {
 			
 		}else {
 		Swal.fire(
-            'Error!',
-            'llene los campos correctamente.',
-            'error')
+            'No se pudo proceder!',
+            'Complete los campos correctamente.',
+            'warning')
 	}}
 }); 

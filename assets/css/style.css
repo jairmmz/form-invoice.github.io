@@ -89,7 +89,7 @@ input[type=number] { -moz-appearance:textfield; }
 }
 
 .formulario__grupo-btn-enviar {
-	display: flex;
+	/* display: flex; */
 	flex-direction: column;
 	align-items: center;
 }
@@ -165,4 +165,8 @@ input[type=number] { -moz-appearance:textfield; }
 .m-r-b{
   padding-right: 80px !important;
   margin-right: 80px !important;
+}
+
+.btn-comprobante{
+	font-size: 17px;
 }

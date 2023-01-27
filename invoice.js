@@ -16,7 +16,7 @@ const igv = document.getElementById("igv");
 const sumTotal = document.getElementById("sumTotal");
 
 // Valor por default para la cantidad
-inputAmount.value = 1;
+// inputAmount.value = 1;
 
 // Boton para guardar
 const btnSave = document.getElementById("btnSave");
@@ -217,25 +217,27 @@ const addDetails = (objDetails) => {
 
 formDetails.onsubmit = (e) => {
     e.preventDefault();
-
-   /*  if (inputSelectDescription.value === "-1") {
-        alert("Debe seleccionar una opción válida");
-        return false;
-    } */
-
-
-    //Creando objeto temporal
-    const objDetails = {
-        amount: inputAmount.value,
-        description: inputSelectDescription.value,
-        priceUnit: inputPriceUnit.value,
-        subTotal: inputPriceTotal.value / 1.18,
-        priceTotal: inputPriceTotal.value
-    };
-    addDetails(objDetails);
-    console.log(detailtArray);
-    redrawTable();
-};
+    if (inputSelectDescription.selectedIndex === 0) {
+        Swal.fire(
+            'No se pudo proceder!',
+            'Debe seleccionar un producto para agregar al detalle de venta.',
+            'warning')
+      e.preventDefault();
+    }else{
+    
+        //Creando objeto temporal
+        const objDetails = {
+            amount: inputAmount.value,
+            description: inputSelectDescription.value,
+            priceUnit: inputPriceUnit.value,
+            subTotal: inputPriceTotal.value / 1.18,
+            priceTotal: inputPriceTotal.value
+        };
+        addDetails(objDetails);
+        console.log(detailtArray);
+        redrawTable();
+    }
+}
 
 formModal.onsubmit = (e) => {
     e.preventDefault();
@@ -282,6 +284,7 @@ btnCancel.onclick = () => {
 }
 
 inputSelectDescription.onchange = () => {
+    inputAmount.value = 1;
     if (inputSelectDescription.value == "0") {
         formDetails.reset();
         return;
@@ -414,7 +417,6 @@ const validarCampo = (expresion, input, campo) => {
 inputs.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
     input.addEventListener('blur', validarFormulario);
-    input.addEventListener('change', validarFormulario);
 });
 inputss.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
@@ -438,7 +440,8 @@ formula.addEventListener('click', (e) => {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: '¡Sí, confimar!',
+        cancelButtonText: 'No, cancelar',
+        confirmButtonText: 'Sí, confimar',
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire(
@@ -454,8 +457,6 @@ formula.addEventListener('click', (e) => {
     })
 
     if (campos.dni && campos.firstName && campos.lastName && campos.address) {
-
-
         document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
         setTimeout(() => {
             document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
@@ -465,12 +466,8 @@ formula.addEventListener('click', (e) => {
             icono.classList.remove('formulario__grupo-correcto');
         });
 
-
     } else {
-
         if (campos.ruc && campos.businessName && campos.address2) {
-
-
             document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
             setTimeout(() => {
                 document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
@@ -480,12 +477,14 @@ formula.addEventListener('click', (e) => {
                 icono.classList.remove('formulario__grupo-correcto');
             });
 
-
         } else {
-            Swal.fire(
-                'No se pudo proceder!',
-                'Complete los campos correctamente.',
-                'warning')
+            if(sumTotal.innerHTML == "0.00"){
+                Swal.fire(
+                    'No se pudo proceder!',
+                    'Debe agregar por lo menos un producto al detalle de la venta.',
+                    'warning')
+            }
+
         }
     }
 }); 

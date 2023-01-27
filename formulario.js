@@ -6,6 +6,9 @@ const inputs = document.querySelectorAll('#formBoleta input');
 const formularios = document.getElementById('formFactura');
 const inputss = document.querySelectorAll('#formFactura input');
 
+const formulas = document.getElementById('formDetails');
+const inputsss = document.querySelectorAll('#formDetails input');
+
 const formula = document.getElementById('formulario');
 //modal
 /* const formularioss = document.getElementById('modal');
@@ -13,6 +16,8 @@ const inputsss = document.querySelectorAll('#modal input'); */
 
 //expreciones regulares 
 const expresiones = {
+	Cantidad: /^\d{1,100}$/, // 7 a 14 numeros.
+
 	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 	firstName: /^[a-zA-ZÀ-ÿ\s]{4,40}$/, // Letras y espacios, pueden llevar acentos.
 	lastName: /^[a-zA-ZÀ-ÿ\s]{4,40}$/,
@@ -27,6 +32,7 @@ const expresiones = {
 }
 //campos
 const campos = {
+	Cantidad: false,
 	usuario: false,
 	firstName: false,
     lastName: false,
@@ -44,6 +50,9 @@ const campos = {
 //casos de validaciones
 const validarFormulario = (e) => {
 	switch (e.target.name) {
+		case "cantidad":
+			validarCampo(expresiones.dni, e.target, 'dni');
+		break;
         case "dni":
 			validarCampo(expresiones.dni, e.target, 'dni');
 		break;
@@ -102,6 +111,10 @@ inputs.forEach((input) => {
 	input.addEventListener('change', validarFormulario);
 });
 inputss.forEach((input) => {
+	input.addEventListener('keyup', validarFormulario);
+	input.addEventListener('blur', validarFormulario);
+});
+inputsss.forEach((input) => {
 	input.addEventListener('keyup', validarFormulario);
 	input.addEventListener('blur', validarFormulario);
 });

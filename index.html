@@ -313,33 +313,37 @@
 
                         <div class="row">
                           <div class="col-12">
-                            <form action="" class="row" id="formDetails" autocomplete="off">
+
+                            <form  action="" class="row" id="formDetails" autocomplete="off">
                               <div class="form-group col-md-4">
-                                <label class="form-label">Seleccionar producto</label>
-                                <select class="form-control" name="" id="selectDescription">
-                                  <option value="0" hidden>Seleccione los productos...</option>
+                                <label class="form-label">Seleccionar producto  </label>
+                                <select itemid="mySelect" class="form-control" name="" id="selectDescription" required>
+                                  <option value="0" hidden >Seleccione los productos...</option>
                                 </select>
                               </div>
                               <div class="form-group col-md-2">
                                 <label class="form-label">Precio unitario</label>
                                 <input type="number" id="priceUnit" class="form-control" disabled>
                               </div>
+
                               <div class="form-group col-md-1">
                                 <label class="form-label">Cantidad</label>
-                                <input type="number" id="amount" class="form-control">
+                                <input type="number" id="amount" class="form-control" min="1" max="100">
                               </div>
+
                               <div class="form-group col-md-2">
                                 <label class="form-label">Precio total</label>
                                 <input type="number" id="priceTotal" class="form-control" disabled>
                               </div>
                               <div class="form-group col-md-3 p-right">
                                 <br>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary"  onclick="validateForm()">
                                   <i class='bx bx-down-arrow-alt'></i>
                                   Agregar producto
                                 </button>
                               </div>
                             </form>
+
                           </div>
                         </div>
                         <div class="row mt-4 mb-4">
@@ -391,7 +395,7 @@
                               Proceder con la venta
                             </button>
                             <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">
-                              Exito!</p>
+                              .</p>
                           </div>
                         </form>
                       </div>
@@ -487,6 +491,18 @@
   <script src="assets/js/main.js"></script>
 
   <!-- Page JS -->
+  <script>
+    function validateForm() {
+      var x = document.getElementById("selectDescription").value;
+      if (x == "") {
+        alert("You must select an option.");
+        return false;
+      }
+      else{
+        //Aquí codigo para enviar formulario
+      }
+    }
+  </script>
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
@@ -515,7 +531,7 @@
   <!-- <script src="/assets/js/form-basic-inputs.js"></script> -->
 
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script src="formulario.js"></script>
+ <!--  <script src="formulario.js"></script> -->
   <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
